@@ -1,0 +1,46 @@
+cucund:
+  rabbitmq:
+    server: test1
+    durable: true #全局持久化设置
+    test1:
+      host: 192.168.1.139
+      prot: 5671
+      username: root
+      password: root@kz365
+      virtual-host: /
+      queue:
+        declare: q1
+          q1:
+            name: cucund.queue  #队列名
+            durable: true       #持久化
+            exclusive: false    #排他队列
+            autoDelete: false   #自动删除
+            args: {}            #队列参数
+        binding: b1
+          b1:
+            queue: cucund.queue       #队列名
+            exchange: cucund.exchange #交换机名
+            routingKey: cucund        #路由key
+            args: {}                  #绑定参数
+      exchange:
+        declare: e1,e2
+          e1:
+            name: cucund.exchange       #交换机名
+            type: topic                 #交换机类型
+            durable: true               #持久化
+            autoDelete: false           #自动删除
+            internal: false             #是否内部交换机
+            args: {}                    #交换机参数
+          e2:
+            name: cucund.exchange       #交换机名
+            type: topic                 #交换机类型
+            durable: true               #持久化
+            autoDelete: false           #自动删除
+            internal: false             #是否内部交换机
+            args: {}                    #交换机参数
+        binding: e1e2
+          e1e2:
+            destination: cucund.exchange  #交换机源 - 从
+            source: cucund2.exhange       #交换机源 - 到
+            routingKey: cucund2           #路由key
+            args: {}                      #参数
