@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    include: jdbc
+application:
+  name: cucund-test
+server:
+  port: 8082

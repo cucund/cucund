@@ -1,4 +1,4 @@
-package com.cucund.project.member.invoke;
+package com.cucund.project.test.invoke;
 
 
 import org.springframework.stereotype.Component;

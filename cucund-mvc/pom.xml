@@ -15,6 +15,7 @@
         <module>cucund-admin</module>
         <module>cucund-member</module>
         <module>cucund-third-party-service</module>
+        <module>cucund-test</module>
     </modules>
     <properties>
         <spring.boot.admin.version>2.0.0</spring.boot.admin.version>

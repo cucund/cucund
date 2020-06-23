@@ -27,7 +27,7 @@ public class Config extends WebMvcConfigurationSupport {
             if (converter instanceof StringHttpMessageConverter)
                 converterTemp = (StringHttpMessageConverter) converter;
         }
-        converters.remove(converterTemp);
+//        converters.remove(converterTemp);
         converterTemp.setSupportedMediaTypes(Arrays.asList(MediaType.APPLICATION_JSON));
         converterTemp.setDefaultCharset(Charset.forName("UTF-8"));
         converterTemp.setWriteAcceptCharset(false);
