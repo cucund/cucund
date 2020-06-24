@@ -15,6 +15,7 @@
         <module>cucund-log</module>
         <module>cucund-tool</module>
         <module>cucund-spring-config</module>
+        <module>cucund-redis</module>
     </modules>
 
     <name>cucund-core</name>
