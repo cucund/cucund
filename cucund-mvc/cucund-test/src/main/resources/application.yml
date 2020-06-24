@@ -1,6 +1,6 @@
 spring:
   profiles:
-    include: jdbc
+    include: jdbc,redis
 application:
   name: cucund-test
 server:

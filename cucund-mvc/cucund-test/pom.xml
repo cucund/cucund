@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>cucund-test</artifactId>
-
+    <dependencies>
+        <dependency>
+            <groupId>org.cucund</groupId>
+            <artifactId>cucund-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
 
 </project>

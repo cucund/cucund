@@ -4,6 +4,8 @@ import com.cucund.project.spring.ob.InvokeClass;
 import com.cucund.project.spring.ob.ObEvent;
 import com.cucund.project.spring.ob.Observer;
 import com.cucund.project.test.service.TestService;
+import com.project.cucund.redis.Redis;
+import com.project.cucund.redis.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,6 +37,13 @@ public class TestController {
         ObEvent ob = new ObEvent(invokeClass,1);
         Observer.publishEvent(ob);
         return "";
+    }
+
+    @GetMapping("redis")
+    public String redis(){
+        RedisUtil.str().set("key","value");
+        String key = RedisUtil.str().get("key");
+        return RedisUtil.str().get("key");
     }
 
 

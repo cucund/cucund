@@ -9,16 +9,16 @@ singleServerConfig:
   failedAttempts: 3
   password: root6379
   subscriptionsPerConnection: 5
-  clientName: null
+  clientName: test
   address: "redis://111.231.71.16:16379"
   subscriptionConnectionMinimumIdleSize: 1
   subscriptionConnectionPoolSize: 50
   connectionMinimumIdleSize: 32
   connectionPoolSize: 64
   database: 0
-  dnsMonitoring: false
+#  dnsMonitoring: false  #参数无效
   dnsMonitoringInterval: 5000
 threads: 0
 nettyThreads: 0
 codec: !<org.redisson.codec.JsonJacksonCodec> {}
-transportMode: "NIO"
+"transportMode": "NIO"

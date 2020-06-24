@@ -33,4 +33,17 @@ public class RedisUtil {
 
     }
 
+    public static StringRedis str(){
+        return stringRedis;
+    }
+
+
+    public static HashRedis hash(){
+        return hashRedis;
+    }
+
+
+    public static LockRedis lock(){
+        return lockRedis;
+    }
 }

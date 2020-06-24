@@ -1,0 +1,13 @@
+spring:
+  redis:
+    redisson:
+      config: classpath:redisson-single.yml
+#    database: 0
+#    password: root6379
+#    port: 16379
+#    host: 111.231.71.16
+#    timeout: 0
+management:
+  health:
+    redis:
+      enabled: false

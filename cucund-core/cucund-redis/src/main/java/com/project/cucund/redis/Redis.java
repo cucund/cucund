@@ -17,7 +17,7 @@ public abstract class Redis {
 
     protected Redis(RedissonConnectionFactory factory ,String charSet){
         redis = new RedisActuator(factory);
-        charSet = "UTF-8";
+        this.charSet = charSet;
     }
 
     public Boolean expire(String key,long time, TimeUnit unit) {
