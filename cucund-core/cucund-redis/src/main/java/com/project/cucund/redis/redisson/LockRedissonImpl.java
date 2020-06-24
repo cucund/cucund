@@ -48,4 +48,5 @@ public class LockRedissonImpl extends Redis implements LockRedis {
     public RLock getLock(String key) {
         return this.getLock(key,LockType.NORMAL);
     }
+
 }
