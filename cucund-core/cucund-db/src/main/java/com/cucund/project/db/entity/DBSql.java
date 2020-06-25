@@ -8,6 +8,8 @@ import lombok.Data;
 @TableName("db_sql")
 public class DBSql extends BaseEntity{
 
+    private String service;
+
     private String name;
 
     private String code;
