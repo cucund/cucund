@@ -1,8 +1,15 @@
 package com.cucund.project.db.config;
 
+
 import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.support.http.StatViewServlet;
 import com.alibaba.druid.support.http.WebStatFilter;
+import com.cucund.project.db.dynamic.ChooseDataSource;
+import com.cucund.project.db.dynamic.DataSourceAspect;
+import com.cucund.project.db.entity.ChooseSource;
+import com.cucund.project.db.entity.DataSourceInner;
+import com.cucund.project.db.properties.ChooseDataSourceProperties;
+import com.cucund.project.db.properties.DataSourceProperties;
 import com.cucund.project.db.properties.DruidDataSourceProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -16,19 +23,64 @@ import javax.servlet.Filter;
 import javax.servlet.Servlet;
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 
 /**
- * Druid数据源配置
+ * 数据源切换工程配置
+ * 但微服务化以后 数据源切换好像也没啥作用  完全可以用mycat代替
+ * 如果要用这个方法请再打开
+ * @see com.cucund.project.db.aop.DataSourceAspect
  */
-@Configuration
-@EnableConfigurationProperties({DruidDataSourceProperties.class})
-public class DruidConfig {
+//@Configuration
+//@EnableConfigurationProperties({ChooseDataSourceProperties.class})
+public class ChooseDataSourceConfig {
+
+
     @Autowired
-    private DruidDataSourceProperties properties;
+    ChooseDataSourceProperties chooseDataSourceProperties;
+
 
     @Bean
-    @ConditionalOnMissingBean
-    public DataSource druidDataSource() {
+    public DataSourceAspect DataSourceAspect(){
+        return new DataSourceAspect();
+    }
+
+    @Bean
+    public ChooseDataSource chooseDataSource(){
+        List<DataSourceProperties> dynamic = chooseDataSourceProperties.getDynamic();
+        if(dynamic == null||dynamic.isEmpty())
+            throw new RuntimeException("无数据源选择");
+        Map<Object,Object> map = new HashMap<Object,Object>();
+        for (DataSourceProperties properties:dynamic) {
+            map.put(properties.getDatasourceName(),druidDataSource(properties));
+        }
+
+        ChooseDataSource dataSource = new ChooseDataSource();
+        dataSource.setDefaultTargetDataSource(map.get(dynamic.get(0).getDatasourceName()));
+        dataSource.setTargetDataSources(map);
+        return dataSource;
+    }
+
+    @Bean
+    public ChooseSource chooseSource(){
+        List<DataSourceInner> dataSourceList = new ArrayList<>();
+
+        for (DataSourceProperties properties:chooseDataSourceProperties.getDynamic()) {
+            String datasourceName = properties.getDatasourceName();
+            dataSourceList.add(new DataSourceInner(datasourceName,properties.getDatasourceType()));
+        }
+
+        ChooseSource chooseSource = new ChooseSource();
+        chooseSource.setDataSources(dataSourceList);
+        chooseSource.setModel(chooseDataSourceProperties.getModel());
+        return chooseSource;
+    }
+
+    public DataSource druidDataSource(DataSourceProperties properties) {
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setDriverClassName(properties.getDriverClassName());
         druidDataSource.setUrl(properties.getUrl());
@@ -56,6 +108,7 @@ public class DruidConfig {
 
         return druidDataSource;
     }
+
 
     /**
      * 注册Servlet信息， 配置监控视图
@@ -94,16 +147,5 @@ public class DruidConfig {
         filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return filterRegistrationBean;
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

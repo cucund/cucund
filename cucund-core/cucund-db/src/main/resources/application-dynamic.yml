@@ -1,0 +1,58 @@
+spring:
+  datasource:
+    name: chooseDataSource
+    type: com.cucund.project.db.dynamic.ChooseDataSource
+    model: cluster
+    dynamic:
+    - datasource-name: datasource1
+      datasource-type: write
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://111.231.71.16:43306/kitty?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root43306
+      filters: stat,wall,log4j2,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+    - datasource-name: datasource2
+      datasource-type: read
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://111.231.71.16:43306/cucund?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root43306
+      filters: stat,wall,log4j2,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+mybatis-plus:
+  configuration:
+    # 是否开启自动驼峰命名规则（camel case）映射，即从经典数据库列名 A_COLUMN（下划线命名） 到经典 Java 属性名 aColumn（驼峰命名） 的类似映射
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.cucund.project.*.entity
+  mapper-locations: classpath*:mybatis/*.xml
+# pagehelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql

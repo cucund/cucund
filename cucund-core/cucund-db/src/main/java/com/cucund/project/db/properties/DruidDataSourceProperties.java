@@ -1,4 +1,4 @@
-package com.cucund.project.db.config;
+package com.cucund.project.db.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
