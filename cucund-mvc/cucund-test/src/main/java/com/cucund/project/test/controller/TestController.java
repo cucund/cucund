@@ -46,15 +46,12 @@ public class TestController {
         return RedisUtil.str().get("key");
     }
 
-
-
     @GetMapping("read")
     public Map<String,Object> read(@RequestParam Map<String,Object> map ){
         return testService.getData(map);
     }
 
     @PostConstruct
-    public void init() throws ClassNotFoundException {
-        log.info("TestController PostConstruct 方法执行");
-    }
+    public void init() throws ClassNotFoundException {log.info("TestController PostConstruct 方法执行");}
+
 }

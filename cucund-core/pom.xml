@@ -16,6 +16,7 @@
         <module>cucund-tool</module>
         <module>cucund-spring-config</module>
         <module>cucund-redis</module>
+        <module>cucund-netty</module>
     </modules>
 
     <name>cucund-core</name>

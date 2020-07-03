@@ -27,6 +27,11 @@ class MessageUtil {
         return soap;
     }
 
+    public static List<String> replace(String soap, String regex){
+        List<String> subUtil = getSubUtil(soap, regex);
+        return subUtil;
+    }
+
     private static List<String> getSubUtil(String soap, String regex) {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(soap);

@@ -9,6 +9,8 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+
 @Component
 @Slf4j
 public class SpringUtil implements ApplicationContextAware {
@@ -29,6 +31,11 @@ public class SpringUtil implements ApplicationContextAware {
 
     public static <T> T getBean(String name, Class<T> clazz) {
         return getApplicationContext().getBean(name, clazz);
+    }
+
+
+    public static <T> Map<String,T> getBeans( Class<T> clazz) {
+        return getApplicationContext().getBeansOfType(clazz);
     }
 
     public static Object getBean(String name) {
