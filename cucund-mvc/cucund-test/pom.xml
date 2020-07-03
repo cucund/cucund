@@ -16,6 +16,11 @@
             <artifactId>cucund-redis</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.cucund</groupId>
+            <artifactId>cucund-netty</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 </project>
