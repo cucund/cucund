@@ -1,7 +1,6 @@
 package com.cucund.project.rabbit.client.bean;
 
 import com.cucund.project.mq.bean.ServerBean;
-import com.sun.istack.internal.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

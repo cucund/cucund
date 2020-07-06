@@ -44,6 +44,8 @@ public class ResultResponseAdvice implements ResponseBodyAdvice<Object> {
             data = null;
         }else if(o instanceof HttpResponse) {
             return o;
+        }else if(o instanceof byte[]){
+            return o;
         }else{
             try {
                 data = JSONUtils.obj2json(o);  //基础类型也可以正确转换

@@ -9,7 +9,7 @@ public class Test {
 
     static Integer i = new Integer(0);
 
-    @org.junit.Test
+//    @org.junit.Test
     public  void test() throws InterruptedException {
         NativeLock lock = new NativeLock();                                                 //同步字符串锁创建
         ExecutorService cachedThreadPool = Executors.newFixedThreadPool(16);   //线程池创建   建议和CPU 线程正比

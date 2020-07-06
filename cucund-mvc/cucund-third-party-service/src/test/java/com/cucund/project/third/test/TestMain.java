@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class TestMain {
 
-    @org.junit.Test
+//    @org.junit.Test
     public void test() throws Exception {
         PartyResultDat dat = new PartyResultDat();
         dat.setExample("123");
@@ -23,8 +23,8 @@ public class TestMain {
             e.printStackTrace();
         }
         System.out.println(str);
-        Object evel = ScriptUtil.evel(str,stringObjectMap);
-        System.out.println(evel);
+//        Object evel = ScriptUtil.evel(str,stringObjectMap);
+//        System.out.println(evel);
     }
 
 }

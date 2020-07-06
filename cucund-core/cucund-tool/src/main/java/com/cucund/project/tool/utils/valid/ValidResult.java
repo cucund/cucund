@@ -1,8 +1,8 @@
 package com.cucund.project.tool.utils.valid;
 
-import com.sun.deploy.util.StringUtils;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 
