@@ -28,6 +28,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
+
+        <cucund.version>1.0.0</cucund.version>
+        <protobuf.version>3.7.1</protobuf.version>
+        <grpc.version>1.20.0</grpc.version>
     </properties>
 
     <repositories>
@@ -63,6 +69,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>-->
+            <dependency>
+                <groupId>org.cucund</groupId>
+                <artifactId>cucund-log</artifactId>
+                <version>${cucund.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>

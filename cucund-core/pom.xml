@@ -17,6 +17,8 @@
         <module>cucund-spring-config</module>
         <module>cucund-redis</module>
         <module>cucund-netty</module>
+        <module>cucund-algorithm</module>
+        <module>cucund-grpc</module>
     </modules>
 
     <name>cucund-core</name>

@@ -1,0 +1,37 @@
+//声明版本
+syntax = 'proto3';
+
+//设定一些选项信息
+option java_multiple_files = true;
+option java_package = "com.cucund.project.test.grpc.basic";
+option java_outer_classname = "BasicGprc";
+option objc_class_prefix = "HLW";
+
+package com.cucund.project.test.grpc;
+
+//定义服务
+service Grpc {
+
+  //定义Rpc,名称为 calculation
+  //请求参数类型为  GrpcRequest
+  //响应参数类型为  GrpcResponse
+  rpc calculation(GrpcRequest) returns(GrpcResponse) {}
+
+}
+
+//在消息定义中，每个字段都有唯一的一个标识符。
+//这些标识符是用来在消息的二进制格式中识别各个字段的，一旦开始使用就不能够再改变。
+
+
+//定义请求参数
+message GrpcRequest {
+  string num1 = 1;
+  string num2 = 2;
+}
+
+//定义响应参数
+message GrpcResponse {
+  string sum = 1;
+  string sub = 2;
+  string product = 3;
+}
