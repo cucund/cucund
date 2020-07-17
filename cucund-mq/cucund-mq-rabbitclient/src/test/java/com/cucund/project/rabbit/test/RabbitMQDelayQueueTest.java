@@ -95,7 +95,7 @@ public class RabbitMQDelayQueueTest {
         serverBean.setHost("192.168.1.139");
         serverBean.setPort(5672);
         serverBean.setUsername("root");
-        serverBean.setPassword("root@kz365");
+        serverBean.setPassword("root");
         serverBean.setVirtualHost("/");
         RabbitMQ rabbitMQ= RabbitMQ.build();
         rabbitMQ.add(serverBean);
